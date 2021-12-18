@@ -2,10 +2,10 @@
 
 this is a example of springboot api with java that
 ## you are able :
-- GET -> get list of students that in database
-- POST -> register new student
-- PUT -> update student name or email
-- DELETE -> delete a student by ID
+- **GET**    -> get list of students that in database
+- **POST**   -> register new student
+- **PUT**    -> update student name or email
+- **DELETE** -> delete a student by ID
 
 ## Database
 Database is postgreSQL
