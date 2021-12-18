@@ -16,4 +16,4 @@ Database is postgreSQL
 ## server
 - 127.0.0.1:8080/api
 
-*Use postman to GET,POST,PUT and DELETE*
+*Use postman to GET, POST, PUT and DELETE*
