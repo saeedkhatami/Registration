@@ -14,17 +14,12 @@ public class studentConfig {
     CommandLineRunner cmdrun(
             studentRepository repository) {
         return args -> {
-            student saeed = new student(
+            student james = new student(
                     "james",
                     "james.portin@gmail.com",
                     LocalDate.of(2005, 11, 3)
-                    );
-            student pooya = new student(
-                    "charlie",
-                    "chambooo@yahoo.com",
-                    LocalDate.of(2004, 1, 9)
-                    );
-            repository.saveAll(List.of(saeed, pooya));
+            );
+            repository.saveAll(List.of(james));
         };
     }
 }
