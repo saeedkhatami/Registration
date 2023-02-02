@@ -23,9 +23,9 @@ public class studentService {
         return stdrepo.findAll();
     }
 
-    public void addNewStudent(student student){
+    public void addNewStudent(student student) {
         Optional<student> stdByEmail = stdrepo.findByEmail(student.getEmail());
-        if (stdByEmail.isPresent()){
+        if (stdByEmail.isPresent()) {
             throw new IllegalStateException("this email is registered");
         }
         stdrepo.save(student);
@@ -34,7 +34,7 @@ public class studentService {
 
     public void deleteStudent(Long studentId) {
         boolean exist = stdrepo.existsById(studentId);
-        if(!exist){
+        if (!exist) {
             throw new IllegalStateException("student with " + studentId + " does not exist");
         }
         stdrepo.deleteById(studentId);
@@ -42,22 +42,22 @@ public class studentService {
 
     @Transactional
     public void updateStudent(Long studentId, String name, String email) {
-    student student = stdrepo.findById(studentId)
-            .orElseThrow(() -> new IllegalStateException(
-                    "student with id " + studentId + " does not exist"));
-    if (name != null &&
-            name.length() > 0 &&
-            !Objects.equals(student.getName(), name)){
-        student.setName(name);
+        student student = stdrepo.findById(studentId)
+                .orElseThrow(() -> new IllegalStateException(
+                        "student with id " + studentId + " does not exist"));
+        if (name != null &&
+                name.length() > 0 &&
+                !Objects.equals(student.getName(), name)) {
+            student.setName(name);
         }
-    if (email != null &&
-            email.length() > 0 &&
-            !Objects.equals(student.getEmail(), email)){
-        Optional<student> stdEmailChange = stdrepo.findByEmail(email);
-        if (stdEmailChange.isPresent()){
-        throw new IllegalStateException("this email is registered");
-        }
+        if (email != null &&
+                email.length() > 0 &&
+                !Objects.equals(student.getEmail(), email)) {
+            Optional<student> stdEmailChange = stdrepo.findByEmail(email);
+            if (stdEmailChange.isPresent()) {
+                throw new IllegalStateException("this email is registered");
+            }
             student.setEmail(email);
-    }
+        }
     }
 }
