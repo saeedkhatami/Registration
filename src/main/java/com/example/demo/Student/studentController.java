@@ -7,8 +7,8 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping(path = "/api")
-public class studentController{
+@RequestMapping(path = "/api/v1/student")
+public class studentController {
     private final studentService stdsrv;
 
     @Autowired
@@ -20,22 +20,22 @@ public class studentController{
     public List<student> getStudent() {
         return stdsrv.getStudent();
     }
-    @PostMapping
-    public void registerNewStudent(@RequestBody student student){
-        stdsrv.addNewStudent(student);
 
+    @PostMapping
+    public void registerNewStudent(@RequestBody student student) {
+        stdsrv.addNewStudent(student);
     }
 
     @PutMapping(path = "{studentID}")
     public void updateStudent(
-    @PathVariable ("studentID") Long studentId,
-    @RequestParam (required = false) String name,
-    @RequestParam (required = false) String email){
+            @PathVariable("studentID") Long studentId,
+            @RequestParam(required = false) String name,
+            @RequestParam(required = false) String email) {
         stdsrv.updateStudent(studentId, name, email);
     }
 
-    @DeleteMapping (path = "{studentId}")
-    public void deleteStudent(@PathVariable("studentId") Long studentId){
+    @DeleteMapping(path = "{studentId}")
+    public void deleteStudent(@PathVariable("studentId") Long studentId) {
         stdsrv.deleteStudent(studentId);
 
     }
