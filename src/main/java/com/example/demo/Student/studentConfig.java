@@ -1,5 +1,7 @@
 package com.example.demo.Student;
 
+import com.example.demo.Student.Models.Majors;
+import com.example.demo.Student.Models.student;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -17,7 +19,10 @@ public class studentConfig {
             student james = new student(
                     "james",
                     "james.portin@gmail.com",
-                    LocalDate.of(2005, 11, 3)
+                    12345678901L,
+                    "address",
+                    LocalDate.of(2005, 11, 3),
+                    Majors.ComputerSciences
             );
             repository.saveAll(List.of(james));
         };
