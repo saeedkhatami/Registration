@@ -8,39 +8,34 @@
 		<version>2.3.0.RELEASE</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>net.javaguides</groupId>
-	<artifactId>Student-Register</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
-	<name>springboot-backend</name>
+	<groupId>uni.student</groupId>
+	<artifactId>Register</artifactId>
+	<version>1.6.0</version>
+	<name>registration</name>
 	<description>Demo project for Spring Boot</description>
 
 	<properties>
 		<java.version>1.8</java.version>
-		<swagger.version>2.9.2</swagger.version>
-		<swagger-annotations.version>1.5.21</swagger-annotations.version>
-		<swagger-models.version>1.5.21</swagger-models.version>
 	</properties>
 
 	<dependencies>
+
 		<dependency>
 			<groupId>io.springfox</groupId>
-			<artifactId>springfox-swagger2</artifactId>
-			<version>${swagger.version}</version>
+			<artifactId>springfox-boot-starter</artifactId>
+			<version>3.0.0</version>
+		</dependency>
+
+
+		<dependency>
+			<groupId>com.google.guava</groupId>
+			<artifactId>guava</artifactId>
+			<version>11.0.2</version>
 		</dependency>
 		<dependency>
-			<groupId>io.springfox</groupId>
-			<artifactId>springfox-swagger-ui</artifactId>
-			<version>${swagger.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>io.swagger</groupId>
-			<artifactId>swagger-annotations</artifactId>
-			<version>${swagger-annotations.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>io.swagger</groupId>
-			<artifactId>swagger-models</artifactId>
-			<version>${swagger-models.version}</version>
+			<groupId>org.thymeleaf</groupId>
+			<artifactId>thymeleaf</artifactId>
+			<version>3.0.12.RELEASE</version>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -49,6 +44,11 @@
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-thymeleaf</artifactId>
 		</dependency>
 
 		<dependency>
