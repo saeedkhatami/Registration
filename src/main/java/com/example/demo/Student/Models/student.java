@@ -1,8 +1,9 @@
-package com.example.demo.Student;
+package com.example.demo.Student.Models;
 
 import javax.persistence.*;
 import java.time.LocalDate;
 import java.time.Period;
+import com.example.demo.Student.Models.Majors;
 
 @Entity
 @Table
@@ -17,10 +18,14 @@ public class student {
             strategy = GenerationType.SEQUENCE,
             generator = "student_sequence"
     )
+
     private Long id;
     private String name;
     private String email;
+    private Long phoneNumber;
+    private String address;
     private LocalDate dob;
+    private Majors major;
     @Transient
     private Integer age;
 
@@ -28,17 +33,35 @@ public class student {
     public student() {
     }
 
-    public student(Long id, String name, String email, LocalDate dob) {
+    public student(Long id,
+                   String name,
+                   String email,
+                   Long phoneNumber,
+                   String address,
+                   LocalDate dob,
+                   Majors major) {
         this.id = id;
         this.name = name;
         this.email = email;
+        this.phoneNumber = phoneNumber;
+        this.address = address;
         this.dob = dob;
+        this.major = major;
     }
 
-    public student(String name, String email, LocalDate dob) {
+    public student(String name,
+                   String email,
+                   Long phoneNumber,
+                   String address,
+                   LocalDate dob,
+                   Majors major) {
+
         this.name = name;
         this.email = email;
+        this.phoneNumber = phoneNumber;
+        this.address = address;
         this.dob = dob;
+        this.major = major;
     }
 
     public LocalDate getDob() {
