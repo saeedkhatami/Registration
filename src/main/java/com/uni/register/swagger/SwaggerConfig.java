@@ -1,9 +1,11 @@
 package com.uni.register.swagger;
 
+
 import com.google.common.base.Predicates;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.RestController;
 import springfox.documentation.builders.ApiInfoBuilder;
 import springfox.documentation.builders.PathSelectors;
 import springfox.documentation.builders.RequestHandlerSelectors;
@@ -14,6 +16,7 @@ import springfox.documentation.swagger.web.*;
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
 import java.time.LocalDate;
+import java.util.function.Predicate;
 
 @Configuration
 @EnableSwagger2
@@ -24,8 +27,8 @@ public class SwaggerConfig {
                 .apiInfo(apiInfo(swaggerConfigProperties))
                 .enable(Boolean.valueOf(swaggerConfigProperties.getEnabled()))
                 .select()
-                .apis(RequestHandlerSelectors.any())
-                .paths(Predicates.not(PathSelectors.regex("/error.*")))
+                .apis(RequestHandlerSelectors.withClassAnnotation(RestController.class))
+                .paths(PathSelectors.any())
                 .build()
                 .pathMapping("/")
                 .directModelSubstitute(LocalDate.class, String.class)
