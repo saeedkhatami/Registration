@@ -1,7 +1,8 @@
-package com.example.demo.Student;
+package com.uni.register.Student.Services;
 
 
-import com.example.demo.Student.Models.student;
+import com.uni.register.Student.Models.student;
+import com.uni.register.Student.Repositories.studentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -30,7 +31,6 @@ public class studentService {
             throw new IllegalStateException("this email is registered");
         }
         stdrepo.save(student);
-
     }
 
     public void deleteStudent(Long studentId) {

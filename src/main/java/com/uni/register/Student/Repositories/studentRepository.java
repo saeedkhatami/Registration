@@ -1,6 +1,6 @@
-package com.example.demo.Student;
+package com.uni.register.Student.Repositories;
 
-import com.example.demo.Student.Models.student;
+import com.uni.register.Student.Models.student;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
@@ -12,5 +12,4 @@ public interface studentRepository extends JpaRepository<student, Long> {
 
     @Query("SELECT s FROM student s WHERE s.email = ?1")
     Optional<student> findByEmail(String email);
-
 }

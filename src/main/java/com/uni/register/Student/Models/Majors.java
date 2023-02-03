@@ -1,4 +1,4 @@
-package com.example.demo.Student.Models;
+package com.uni.register.Student.Models;
 
 public enum Majors {
     ComputerSciences,

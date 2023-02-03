@@ -1,9 +1,8 @@
-package com.example.demo.Student.Models;
+package com.uni.register.Student.Models;
 
 import javax.persistence.*;
 import java.time.LocalDate;
 import java.time.Period;
-import com.example.demo.Student.Models.Majors;
 
 @Entity
 @Table

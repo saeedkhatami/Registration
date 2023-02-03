@@ -1,13 +1,13 @@
-package com.example.demo;
+package com.uni.register;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class DemoApplication {
+public class studentRegister {
 
     public static void main(String[] args) {
-        SpringApplication.run(DemoApplication.class, args);
+        SpringApplication.run(studentRegister.class, args);
     }
 
 }
