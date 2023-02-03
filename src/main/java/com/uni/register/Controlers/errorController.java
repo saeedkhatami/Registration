@@ -1,4 +1,4 @@
-package com.uni.register.Student.Controlers;
+package com.uni.register.Controlers;
 
 
 import org.springframework.boot.web.servlet.error.ErrorController;

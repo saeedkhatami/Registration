@@ -1,4 +1,4 @@
-package com.uni.register.Student.Models;
+package com.uni.register.Models;
 
 import javax.persistence.*;
 import java.time.LocalDate;

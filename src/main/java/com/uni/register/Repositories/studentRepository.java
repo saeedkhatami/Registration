@@ -1,6 +1,6 @@
-package com.uni.register.Student.Repositories;
+package com.uni.register.Repositories;
 
-import com.uni.register.Student.Models.student;
+import com.uni.register.Models.student;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;

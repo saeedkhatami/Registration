@@ -1,4 +1,4 @@
-package com.uni.register.Student.swagger;
+package com.uni.register.swagger;
 
 import lombok.Data;
 import org.springframework.beans.factory.annotation.Value;

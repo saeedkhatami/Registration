@@ -1,8 +1,8 @@
-package com.uni.register.Student.Services;
+package com.uni.register.Services;
 
 
-import com.uni.register.Student.Models.student;
-import com.uni.register.Student.Repositories.studentRepository;
+import com.uni.register.Models.student;
+import com.uni.register.Repositories.studentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

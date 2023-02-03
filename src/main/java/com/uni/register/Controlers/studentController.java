@@ -1,8 +1,8 @@
-package com.uni.register.Student.Controlers;
+package com.uni.register.Controlers;
 
 
-import com.uni.register.Student.Models.student;
-import com.uni.register.Student.Services.studentService;
+import com.uni.register.Models.student;
+import com.uni.register.Services.studentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
