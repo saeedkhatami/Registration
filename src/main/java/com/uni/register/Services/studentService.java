@@ -20,6 +20,7 @@ public class studentService {
         this.stdrepo = stdrepo;
     }
 
+
     public List<student> getStudent() {
 
         return stdrepo.findAll();
@@ -60,5 +61,14 @@ public class studentService {
             }
             student.setEmail(email);
         }
+    }
+
+    public Optional<student> getstudentbyid(Long studentId) {
+        student student = stdrepo.findById(studentId)
+                .orElseThrow(() -> new IllegalStateException(
+                        "student with id" + studentId + "does not exist"
+                ));
+
+        return Optional.ofNullable(student);
     }
 }
