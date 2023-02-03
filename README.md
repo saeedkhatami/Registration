@@ -1,6 +1,6 @@
 # Student registration api
 
-this is an example of springboot api with java that
+this is an example of springboot api with java that simulates student registration
 ## you are able :
 - **GET**    -> get list of students that in database
 - **POST**   -> register new student
