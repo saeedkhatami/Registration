@@ -1,7 +1,6 @@
 package com.uni.register.swagger;
 
 
-import com.google.common.base.Predicates;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.ResponseEntity;
@@ -16,7 +15,6 @@ import springfox.documentation.swagger.web.*;
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
 import java.time.LocalDate;
-import java.util.function.Predicate;
 
 @Configuration
 @EnableSwagger2
