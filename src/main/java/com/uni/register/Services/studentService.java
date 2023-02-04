@@ -26,6 +26,15 @@ public class studentService {
         return studentRepo.findAll();
     }
 
+    public Optional<student> getStudentById(Long studentId) {
+        student student = studentRepo.findById(studentId)
+                .orElseThrow(() -> new IllegalStateException(
+                        "Student with id" + studentId + " does not exist"
+                ));
+
+        return Optional.ofNullable(student);
+    }
+
     public void addNewStudent(student student) {
         Optional<student> stdByEmail = studentRepo.findByEmail(student.getEmail());
         if (stdByEmail.isPresent()) {
@@ -100,14 +109,5 @@ public class studentService {
 
             REstudent.setMajor(UPstudent.getMajor());
         }
-    }
-
-    public Optional<student> getStudentById(Long studentId) {
-        student student = studentRepo.findById(studentId)
-                .orElseThrow(() -> new IllegalStateException(
-                        "Student with id" + studentId + " does not exist"
-                ));
-
-        return Optional.ofNullable(student);
     }
 }
