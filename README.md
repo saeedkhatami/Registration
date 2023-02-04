@@ -1,16 +1,16 @@
 # Student registration api
 
-this is an example of springboot api with java that simulates student registration
+This is an example of springboot api with java that simulates student registration</btr>
+With: 
+- **Request log system**
+- **Swagger UI**
+- **Error controller**
+
 ## you are able :
 - **GET**    -> get list of students that in database
 - **POST**   -> register new student
 - **PUT**    -> update student name or email
 - **DELETE** -> delete a student by ID
-
-
-#### **[Swagger](https://swagger.io/)**
-you can use [swagger](http://localhost:9000/swagger-ui/#/) to test all GET, POST, PUT and DELETE requests.
-
 
 ## Database
 Database is **MySQL**
@@ -18,7 +18,14 @@ Database is **MySQL**
 - Password : you can change it in `application.properties` *Default is `toor`*
 - default port `3306`
 
-## server
+## API address
 - 127.0.0.1:9000/api/v1/student
 
-*Use postman to GET, POST, PUT and DELETE*
+
+*Use **Postman** or built in [**swaggerUI**](http://localhost:9000/swagger-ui/) to **GET**, **POST**, **PUT** and **DELETE***
+
+
+## TODO
+- [ ] Security
+- [ ] Frontend
+- [ ] Pagination
