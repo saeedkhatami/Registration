@@ -13,60 +13,99 @@ import java.util.Optional;
 
 @Service
 public class studentService {
-    private final studentRepository stdrepo;
+    private final studentRepository studentRepo;
 
     @Autowired
-    public studentService(studentRepository stdrepo) {
-        this.stdrepo = stdrepo;
+    public studentService(studentRepository studentRepo) {
+        this.studentRepo = studentRepo;
     }
 
 
     public List<student> getStudent() {
 
-        return stdrepo.findAll();
+        return studentRepo.findAll();
     }
 
     public void addNewStudent(student student) {
-        Optional<student> stdByEmail = stdrepo.findByEmail(student.getEmail());
+        Optional<student> stdByEmail = studentRepo.findByEmail(student.getEmail());
         if (stdByEmail.isPresent()) {
             throw new IllegalStateException("this email is registered");
         }
-        stdrepo.save(student);
+        studentRepo.save(student);
     }
 
     public void deleteStudent(Long studentId) {
-        boolean exist = stdrepo.existsById(studentId);
+        boolean exist = studentRepo.existsById(studentId);
         if (!exist) {
-            throw new IllegalStateException("student with " + studentId + " does not exist");
+            throw new IllegalStateException("Student with " + studentId + " does not exist");
         }
-        stdrepo.deleteById(studentId);
+        studentRepo.deleteById(studentId);
     }
 
     @Transactional
-    public void updateStudent(Long studentId, String name, String email) {
-        student student = stdrepo.findById(studentId)
+    public void updateStudent(Long studentId, student UPstudent) {
+        /*
+        *    student
+        *       name
+        *       email
+        *       phone number
+        *       address
+        *       date of birth
+        *       major
+        */
+        student REstudent = studentRepo.findById(studentId)
                 .orElseThrow(() -> new IllegalStateException(
-                        "student with id " + studentId + " does not exist"));
-        if (name != null &&
-                name.length() > 0 &&
-                !Objects.equals(student.getName(), name)) {
-            student.setName(name);
+                        "Student with id " + studentId + " does not exist"));
+
+        if (UPstudent.getName() != null &&
+                UPstudent.getName().length() > 0 &&
+                !Objects.equals(REstudent.getName(), UPstudent.getName())) {
+
+            REstudent.setName(UPstudent.getName());
         }
-        if (email != null &&
-                email.length() > 0 &&
-                !Objects.equals(student.getEmail(), email)) {
-            Optional<student> stdEmailChange = stdrepo.findByEmail(email);
-            if (stdEmailChange.isPresent()) {
-                throw new IllegalStateException("this email is registered");
+        if (UPstudent.getEmail() != null &&
+                UPstudent.getEmail().length() > 0 &&
+                !Objects.equals(REstudent.getEmail(), UPstudent.getEmail())) {
+
+            Optional<student> studentEmailChange = studentRepo.findByEmail(UPstudent.getEmail());
+
+            if (studentEmailChange.isPresent()) {
+                throw new IllegalStateException("This email is registered");
             }
-            student.setEmail(email);
+            REstudent.setEmail(UPstudent.getEmail());
+        }
+
+        if(UPstudent.getPhoneNumber() != null &&
+                UPstudent.getPhoneNumber() > 0 &&
+                !Objects.equals(REstudent.getPhoneNumber(), UPstudent.getPhoneNumber())){
+            Optional<student> studentPhonenumberChange = studentRepo.findByPhoneNumber(UPstudent.getPhoneNumber());
+            if(studentPhonenumberChange.isPresent()) {
+                throw new IllegalStateException("This Phone number is registered");
+            }
+            REstudent.setPhoneNumber(UPstudent.getPhoneNumber());
+        }
+        if (UPstudent.getAddress() != null &&
+                UPstudent.getAddress().length() > 0 &&
+                !Objects.equals(REstudent.getAddress(), UPstudent.getAddress())) {
+
+            REstudent.setAddress(UPstudent.getAddress());
+        }
+        if (UPstudent.getDob() != null &&
+                !Objects.equals(REstudent.getDob(), UPstudent.getDob())) {
+
+            REstudent.setDob(UPstudent.getDob());
+        }
+        if (UPstudent.getMajor() != null &&
+                !Objects.equals(REstudent.getMajor(), UPstudent.getMajor())) {
+
+            REstudent.setMajor(UPstudent.getMajor());
         }
     }
 
-    public Optional<student> getstudentbyid(Long studentId) {
-        student student = stdrepo.findById(studentId)
+    public Optional<student> getStudentById(Long studentId) {
+        student student = studentRepo.findById(studentId)
                 .orElseThrow(() -> new IllegalStateException(
-                        "student with id" + studentId + "does not exist"
+                        "Student with id" + studentId + " does not exist"
                 ));
 
         return Optional.ofNullable(student);
