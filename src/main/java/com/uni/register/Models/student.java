@@ -8,14 +8,22 @@ import java.time.Period;
 @Table
 public class student {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @SequenceGenerator(
+            name = "student_sequence",
+            sequenceName = "student_sequence",
+            allocationSize = 1
+    )
+    @GeneratedValue(
+            strategy = GenerationType.SEQUENCE,
+            generator = "student_sequence"
+    )
     private Long id;
     private String name;
     private String email;
     private Long phoneNumber;
     private String address;
     private LocalDate dob;
-    private Majors major;
+    private majors major;
     @Transient
     private Integer age;
 
@@ -29,7 +37,7 @@ public class student {
                    Long phoneNumber,
                    String address,
                    LocalDate dob,
-                   Majors major) {
+                   majors major) {
         this.id = id;
         this.name = name;
         this.email = email;
@@ -44,7 +52,7 @@ public class student {
                    Long phoneNumber,
                    String address,
                    LocalDate dob,
-                   Majors major) {
+                   majors major) {
 
         this.name = name;
         this.email = email;
@@ -110,11 +118,11 @@ public class student {
         this.address = address;
     }
 
-    public Majors getMajor() {
+    public majors getMajor() {
         return major;
     }
 
-    public void setMajor(Majors major) {
+    public void setMajor(majors major) {
         this.major = major;
     }
 
