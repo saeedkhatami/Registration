@@ -27,5 +27,5 @@ Database is **MySQL**
 
 ## TODO
 - [ ] Security
-- [ ] Frontend
 - [ ] Pagination
+- [ ] Frontend
