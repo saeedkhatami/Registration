@@ -12,9 +12,9 @@ import java.io.IOException;
 
 @Component
 @Order(1)
-public class transactionFilter implements Filter {
+public class TransactionFilter implements Filter {
 
-    private final static Logger LOG = LoggerFactory.getLogger(transactionFilter.class);
+    private final static Logger LOG = LoggerFactory.getLogger(TransactionFilter.class);
 
     @Override
     public void init(final FilterConfig filterConfig) throws ServletException {
