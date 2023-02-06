@@ -6,7 +6,7 @@ import java.time.Period;
 
 @Entity
 @Table
-public class student {
+public class Student {
     @Id
     @SequenceGenerator(
             name = "student_sequence",
@@ -18,28 +18,31 @@ public class student {
             generator = "student_sequence"
     )
     private Long id;
-    private String name;
+    private String firstName;
+    private String lastName;
     private String email;
     private Long phoneNumber;
     private String address;
     private LocalDate dob;
-    private majors major;
+    private Majors major;
     @Transient
     private Integer age;
 
 
-    public student() {
+    public Student() {
     }
 
-    public student(Long id,
-                   String name,
+    public Student(Long id,
+                   String firstName,
+                   String lastName,
                    String email,
                    Long phoneNumber,
                    String address,
                    LocalDate dob,
-                   majors major) {
+                   Majors major) {
         this.id = id;
-        this.name = name;
+        this.firstName = firstName;
+        this.lastName = lastName;
         this.email = email;
         this.phoneNumber = phoneNumber;
         this.address = address;
@@ -47,14 +50,16 @@ public class student {
         this.major = major;
     }
 
-    public student(String name,
+    public Student(String firstName,
+                   String lastName,
                    String email,
                    Long phoneNumber,
                    String address,
                    LocalDate dob,
-                   majors major) {
+                   Majors major) {
 
-        this.name = name;
+        this.firstName = firstName;
+        this.lastName = lastName;
         this.email = email;
         this.phoneNumber = phoneNumber;
         this.address = address;
@@ -86,12 +91,20 @@ public class student {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
+    public String getFirstName() {
+        return firstName;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
     }
 
     public String getEmail() {
@@ -118,11 +131,11 @@ public class student {
         this.address = address;
     }
 
-    public majors getMajor() {
+    public Majors getMajor() {
         return major;
     }
 
-    public void setMajor(majors major) {
+    public void setMajor(Majors major) {
         this.major = major;
     }
 
@@ -130,7 +143,8 @@ public class student {
     public String toString() {
         return "student{" +
                 "id=" + id +
-                ", name='" + name + '\'' +
+                ", first name='" + firstName + '\'' +
+                ", last name'" + lastName + '\'' +
                 ", email='" + email + '\'' +
                 ", phoneNumber=" + phoneNumber +
                 ", address='" + address + '\'' +
