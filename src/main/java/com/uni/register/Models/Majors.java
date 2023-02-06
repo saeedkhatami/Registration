@@ -1,6 +1,6 @@
 package com.uni.register.Models;
 
-public enum majors {
+public enum Majors {
     ComputerSciences,
     Mathematics,
     SystemsScience,
