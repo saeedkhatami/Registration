@@ -13,9 +13,9 @@ import java.io.IOException;
 
 @Component
 @Order(2)
-public class requestResponseLoggingFilter implements Filter {
+public class RequestResponseLoggingFilter implements Filter {
 
-    private final static Logger LOG = LoggerFactory.getLogger(requestResponseLoggingFilter.class);
+    private final static Logger LOG = LoggerFactory.getLogger(RequestResponseLoggingFilter.class);
 
     @Override
     public void init(final FilterConfig filterConfig) throws ServletException {
