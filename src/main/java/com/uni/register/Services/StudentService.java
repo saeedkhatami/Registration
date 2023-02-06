@@ -1,8 +1,8 @@
 package com.uni.register.Services;
 
 
-import com.uni.register.Models.student;
-import com.uni.register.Repositories.studentRepository;
+import com.uni.register.Models.Student;
+import com.uni.register.Repositories.StudentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -12,22 +12,22 @@ import java.util.Objects;
 import java.util.Optional;
 
 @Service
-public class studentService {
-    private final studentRepository studentRepo;
+public class StudentService {
+    private final StudentRepository studentRepo;
 
     @Autowired
-    public studentService(studentRepository studentRepo) {
+    public StudentService(StudentRepository studentRepo) {
         this.studentRepo = studentRepo;
     }
 
 
-    public List<student> getStudent() {
+    public List<Student> getStudent() {
 
         return studentRepo.findAll();
     }
 
-    public Optional<student> getStudentById(Long studentId) {
-        student student = studentRepo.findById(studentId)
+    public Optional<Student> getStudentById(Long studentId) {
+        Student student = studentRepo.findById(studentId)
                 .orElseThrow(() -> new IllegalStateException(
                         "Student with id" + studentId + " does not exist"
                 ));
@@ -35,8 +35,8 @@ public class studentService {
         return Optional.ofNullable(student);
     }
 
-    public void addNewStudent(student student) {
-        Optional<student> stdByEmail = studentRepo.findByEmail(student.getEmail());
+    public void addNewStudent(Student student) {
+        Optional<Student> stdByEmail = studentRepo.findByEmail(student.getEmail());
         if (stdByEmail.isPresent()) {
             throw new IllegalStateException("this email is registered");
         }
@@ -52,31 +52,38 @@ public class studentService {
     }
 
     @Transactional
-    public void updateStudent(Long studentId, student UPstudent) {
+    public void updateStudent(Long studentId, Student UPstudent) {
         /*
-        *    student
-        *       name
-        *       email
-        *       phone number
-        *       address
-        *       date of birth
-        *       major
-        */
-        student REstudent = studentRepo.findById(studentId)
+         *    student
+         *       first name
+         *       last name
+         *       email
+         *       phone number
+         *       address
+         *       date of birth
+         *       major
+         */
+        Student REstudent = studentRepo.findById(studentId)
                 .orElseThrow(() -> new IllegalStateException(
                         "Student with id " + studentId + " does not exist"));
 
-        if (UPstudent.getName() != null &&
-                UPstudent.getName().length() > 0 &&
-                !Objects.equals(REstudent.getName(), UPstudent.getName())) {
+        if (UPstudent.getFirstName() != null &&
+                UPstudent.getFirstName().length() > 0 &&
+                !Objects.equals(REstudent.getFirstName(), UPstudent.getFirstName())) {
 
-            REstudent.setName(UPstudent.getName());
+            REstudent.setFirstName(UPstudent.getFirstName());
+        }
+        if (UPstudent.getLastName() != null &&
+                UPstudent.getLastName().length() > 0 &&
+                !Objects.equals(REstudent.getLastName(), UPstudent.getLastName())) {
+
+            REstudent.setLastName(UPstudent.getLastName());
         }
         if (UPstudent.getEmail() != null &&
                 UPstudent.getEmail().length() > 0 &&
                 !Objects.equals(REstudent.getEmail(), UPstudent.getEmail())) {
 
-            Optional<student> studentEmailChange = studentRepo.findByEmail(UPstudent.getEmail());
+            Optional<Student> studentEmailChange = studentRepo.findByEmail(UPstudent.getEmail());
 
             if (studentEmailChange.isPresent()) {
                 throw new IllegalStateException("This email is registered");
@@ -84,11 +91,11 @@ public class studentService {
             REstudent.setEmail(UPstudent.getEmail());
         }
 
-        if(UPstudent.getPhoneNumber() != null &&
+        if (UPstudent.getPhoneNumber() != null &&
                 UPstudent.getPhoneNumber() > 0 &&
-                !Objects.equals(REstudent.getPhoneNumber(), UPstudent.getPhoneNumber())){
-            Optional<student> studentPhonenumberChange = studentRepo.findByPhoneNumber(UPstudent.getPhoneNumber());
-            if(studentPhonenumberChange.isPresent()) {
+                !Objects.equals(REstudent.getPhoneNumber(), UPstudent.getPhoneNumber())) {
+            Optional<Student> studentPhoneNumberChange = studentRepo.findByPhoneNumber(UPstudent.getPhoneNumber());
+            if (studentPhoneNumberChange.isPresent()) {
                 throw new IllegalStateException("This Phone number is registered");
             }
             REstudent.setPhoneNumber(UPstudent.getPhoneNumber());
