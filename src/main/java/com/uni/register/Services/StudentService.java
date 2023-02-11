@@ -13,21 +13,21 @@ import java.util.Optional;
 
 @Service
 public class StudentService {
-    private final StudentRepository studentRepo;
+    private final StudentRepository studentRepository;
 
     @Autowired
-    public StudentService(StudentRepository studentRepo) {
-        this.studentRepo = studentRepo;
+    public StudentService(StudentRepository studentRepository) {
+        this.studentRepository = studentRepository;
     }
 
 
     public List<Student> getStudent() {
 
-        return studentRepo.findAll();
+        return studentRepository.findAll();
     }
 
     public Optional<Student> getStudentById(Long studentId) {
-        Student student = studentRepo.findById(studentId)
+        Student student = studentRepository.findById(studentId)
                 .orElseThrow(() -> new IllegalStateException(
                         "Student with id" + studentId + " does not exist"
                 ));
@@ -36,34 +36,24 @@ public class StudentService {
     }
 
     public void addNewStudent(Student student) {
-        Optional<Student> stdByEmail = studentRepo.findByEmail(student.getEmail());
+        Optional<Student> stdByEmail = studentRepository.findByEmail(student.getEmail());
         if (stdByEmail.isPresent()) {
             throw new IllegalStateException("this email is registered");
         }
-        studentRepo.save(student);
+        studentRepository.save(student);
     }
 
     public void deleteStudent(Long studentId) {
-        boolean exist = studentRepo.existsById(studentId);
+        boolean exist = studentRepository.existsById(studentId);
         if (!exist) {
             throw new IllegalStateException("Student with " + studentId + " does not exist");
         }
-        studentRepo.deleteById(studentId);
+        studentRepository.deleteById(studentId);
     }
 
     @Transactional
     public void updateStudent(Long studentId, Student UPstudent) {
-        /*
-         *    student
-         *       first name
-         *       last name
-         *       email
-         *       phone number
-         *       address
-         *       date of birth
-         *       major
-         */
-        Student REstudent = studentRepo.findById(studentId)
+        Student REstudent = studentRepository.findById(studentId)
                 .orElseThrow(() -> new IllegalStateException(
                         "Student with id " + studentId + " does not exist"));
 
@@ -83,7 +73,7 @@ public class StudentService {
                 UPstudent.getEmail().length() > 0 &&
                 !Objects.equals(REstudent.getEmail(), UPstudent.getEmail())) {
 
-            Optional<Student> studentEmailChange = studentRepo.findByEmail(UPstudent.getEmail());
+            Optional<Student> studentEmailChange = studentRepository.findByEmail(UPstudent.getEmail());
 
             if (studentEmailChange.isPresent()) {
                 throw new IllegalStateException("This email is registered");
@@ -94,7 +84,7 @@ public class StudentService {
         if (UPstudent.getPhoneNumber() != null &&
                 UPstudent.getPhoneNumber() > 0 &&
                 !Objects.equals(REstudent.getPhoneNumber(), UPstudent.getPhoneNumber())) {
-            Optional<Student> studentPhoneNumberChange = studentRepo.findByPhoneNumber(UPstudent.getPhoneNumber());
+            Optional<Student> studentPhoneNumberChange = studentRepository.findByPhoneNumber(UPstudent.getPhoneNumber());
             if (studentPhoneNumberChange.isPresent()) {
                 throw new IllegalStateException("This Phone number is registered");
             }
