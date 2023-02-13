@@ -2,6 +2,7 @@ package com.uni.register.Models;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.time.Period;
 
 @Entity
 @Table(name="staff")
@@ -23,7 +24,7 @@ public class Staff {
     private Long phoneNumber;
     private String address;
     private LocalDate dob;
-    @Transient
+
     private Integer age;
 
     public Staff() {
@@ -116,7 +117,7 @@ public class Staff {
     }
 
     public Integer getAge() {
-        return age;
+        return Period.between(this.dob, LocalDate.now()).getYears();
     }
 
     public void setAge(Integer age) {

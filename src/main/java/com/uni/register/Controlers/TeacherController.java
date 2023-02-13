@@ -1,7 +1,9 @@
 package com.uni.register.Controlers;
 
 import com.uni.register.Models.Teacher;
+import com.uni.register.Repositories.TeacherRepository;
 import com.uni.register.Services.TeacherService;
+import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -10,12 +12,14 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
+@Api("Teacher controller")
 @RequestMapping(path = "/api/v1/teacher")
 public class TeacherController {
     private final TeacherService teacherService;
 
     @Autowired
-    public TeacherController(TeacherService teacherService) {
+    public TeacherController(TeacherService teacherService,
+                             TeacherRepository teacherRepository) {
         this.teacherService = teacherService;
     }
 
@@ -32,7 +36,6 @@ public class TeacherController {
             @PathVariable("teacherID") Long teacherId) {
         return teacherService.getTeacherById(teacherId);
     }
-
 
     @PostMapping
     @ApiOperation(value = "Register new Teacher")

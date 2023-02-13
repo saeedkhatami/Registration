@@ -1,8 +1,9 @@
 package com.uni.register.Controlers;
 
-
 import com.uni.register.Models.Staff;
+import com.uni.register.Repositories.StaffRepository;
 import com.uni.register.Services.StaffService;
+import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -11,17 +12,19 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
+@Api("Staff controller")
 @RequestMapping(path = "/api/v1/staff")
 public class StaffController {
     private final StaffService staffService;
 
     @Autowired
-    public StaffController(StaffService staffService) {
+    public StaffController(StaffService staffService,
+                           StaffRepository staffRepository) {
         this.staffService = staffService;
     }
 
     @GetMapping
-    @ApiOperation(value = "Get all teachers")
+    @ApiOperation(value = "Get all staffs")
     public List<Staff> getStaff() {
         return staffService.getStaff();
     }
@@ -33,7 +36,6 @@ public class StaffController {
             @PathVariable("staffId") Long staffId) {
         return staffService.getStaffById(staffId);
     }
-
 
     @PostMapping
     @ApiOperation(value = "Register new staff")

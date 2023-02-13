@@ -25,7 +25,7 @@ public class Student {
     private String address;
     private LocalDate dob;
     private Majors major;
-    @Transient
+
     private Integer age;
 
 

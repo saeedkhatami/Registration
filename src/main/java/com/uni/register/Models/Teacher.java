@@ -2,6 +2,7 @@ package com.uni.register.Models;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.time.Period;
 
 @Entity
 @Table(name="teacher")
@@ -24,7 +25,7 @@ public class Teacher {
     private String address;
     private LocalDate dob;
     private Majors major;
-    @Transient
+
     private Integer age;
 
     public Teacher() {
@@ -129,7 +130,7 @@ public class Teacher {
     }
 
     public Integer getAge() {
-        return age;
+        return Period.between(this.dob, LocalDate.now()).getYears();
     }
 
     public void setAge(Integer age) {
