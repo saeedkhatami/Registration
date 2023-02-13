@@ -6,6 +6,7 @@ This is an example of springboot api with java that simulates student registrati
 - **Request log system**
 - **Swagger UI**
 - **Error controller**
+- **Sort**
 
 ## you are able :
 - **GET**    -> get list of students that in database
