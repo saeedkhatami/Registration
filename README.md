@@ -1,7 +1,8 @@
 # Student registration api
 
-This is an example of springboot api with java that simulates student registration</btr>
-With: 
+This is an example of springboot api with java that simulates student registration With: 
+
+
 - **Request log system**
 - **Swagger UI**
 - **Error controller**
