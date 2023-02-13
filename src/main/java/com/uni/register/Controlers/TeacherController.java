@@ -16,13 +16,11 @@ import java.util.Optional;
 @RequestMapping(path = "/api/v1/teacher")
 public class TeacherController {
     private final TeacherService teacherService;
-    private final TeacherRepository teacherRepository;
 
     @Autowired
     public TeacherController(TeacherService teacherService,
                              TeacherRepository teacherRepository) {
         this.teacherService = teacherService;
-        this.teacherRepository = teacherRepository;
     }
 
     @GetMapping
